@@ -1,16 +1,21 @@
 Alpha Buddy - Unofficial College Companion App
 📌 About
-Alpha Buddy is a student-focused app designed to simplify college life with essential tools and resources.
+Alpha Buddy is a student-focused app designed to simplify college life with essential tools and resources.  
 
-🚀 Features
-✅ Available Now
+----------------------
+🚀 Features  
 
-📅 Class & Exam Timetable (Personalized for your department & semester)
-🛠️ In Progress
+✅ Available Now  
+
+📅 Class & Exam Timetable (Personalized for your department & semester)  
+------------------
+🛠️ In Progress  
 
 📢 Events & Announcements
-📚 Notes
-⏳ Upcoming
+📚 Notes  
+
+-----------------
+⏳ Upcoming  
 
 ✅ Assignment & Deadline Tracker
 📝 Tasks & To-Do Lists
@@ -20,7 +25,9 @@ Alpha Buddy is a student-focused app designed to simplify college life with esse
 🛠️ Mini Useful Tools
 🎓 Scholarship & Internship Alerts
 📩 Feedback & Reporting System
-🌟 Showcasing Talents/Skills Feed
+🌟 Showcasing Talents/Skills Feed  
+
+------------------------
 👋 Contribute & Stay Updated!
 Alpha Buddy is actively evolving!
 
