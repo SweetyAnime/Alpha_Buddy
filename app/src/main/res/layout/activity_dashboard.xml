@@ -4,77 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/cardview_dark_background"
     tools:context=".Dashboard"
     tools:ignore="Overdraw">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Welcome Buddy"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieProfile"
+        android:layout_width="72dp"
+        android:layout_height="76dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,TextSizeCheck" />
-
-    <ImageButton
-        android:id="@+id/studymaterials"
-        android:layout_width="112dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/booklogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_fileName="profileicon.json" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="112dp"
-        android:layout_height="23dp"
-        android:text="Study Materials"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/studymaterials"
-        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
-        tools:layout_editor_absoluteX="4dp" />
-
-    <ImageButton
-        android:id="@+id/timetable"
-        android:layout_width="112dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/timetableicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Welcome Buddy"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/studymaterials"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="4dp"
-        android:text="Time Table"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/timetable"
-        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
+        app:layout_constraintStart_toEndOf="@+id/lottieProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
