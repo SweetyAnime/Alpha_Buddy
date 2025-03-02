@@ -15,15 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_fileName="profileicon.json" />
+        app:lottie_fileName="profileicon.json"
+        app:lottie_loop="true" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/poppinsmedium"
-        android:text="Welcome Buddy"
+        android:text="Welcome Buddy!"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +32,69 @@
         app:layout_constraintStart_toEndOf="@+id/lottieProfile"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,MissingConstraints" />
+
+    <!-- Overlay for Timetable (Initially Hidden) -->
+
+    <TextView
+        android:id="@+id/timetabletextdash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="TimeTable"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timetableButton"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/timetableButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lottieProfile"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="timetable.json"
+        app:lottie_loop="true"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <LinearLayout
+        android:id="@+id/timetableOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:alpha="0.8"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/timetableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="20dp" />
+
+        <Button
+            android:id="@+id/closeOverlayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textColor="@android:color/white"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
