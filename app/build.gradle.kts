@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -13,9 +14,10 @@ android {
         //noinspection OldTargetApi
         targetSdk = 33
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {
@@ -40,8 +42,12 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     //added by me
-    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
-    implementation ("com.airbnb.android:lottie:6.6.2")
+    implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx:22.3.0")
+    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
+    implementation ("com.airbnb.android:lottie:6.6.3")
+    implementation("com.google.firebase:firebase-firestore-ktx:25.1.2")
+
 
 
     testImplementation("junit:junit:4.13.2")

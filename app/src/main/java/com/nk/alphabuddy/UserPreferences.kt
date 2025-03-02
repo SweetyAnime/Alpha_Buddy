@@ -2,6 +2,7 @@ package com.nk.alphabuddy
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 
 class UserPreferences(context: Context) {
 
@@ -9,10 +10,10 @@ class UserPreferences(context: Context) {
         context.getSharedPreferences("AlphaBuddyPrefs", Context.MODE_PRIVATE)
 
     fun saveUserChoice(department: String, semester: String) {
-        sharedPreferences.edit()
-            .putString("department", department)
-            .putString("semester", semester)
-            .apply()
+        sharedPreferences.edit {
+            putString("department", department)
+                .putString("semester", semester)
+        }
     }
 
     fun getDepartment(): String? {

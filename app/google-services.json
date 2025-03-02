@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239427316498",
+    "project_id": "alphabuddyforstudents",
+    "storage_bucket": "alphabuddyforstudents.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239427316498:android:e6837e58040edace6ae1cb",
+        "android_client_info": {
+          "package_name": "com.nk.alphabuddy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0DXPclsKRH4ApzQh_7EoIGInbuSgB8Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

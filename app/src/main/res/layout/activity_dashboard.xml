@@ -121,7 +121,7 @@
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.212"
         app:layout_constraintStart_toEndOf="@+id/timetableButton"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:lottie_autoPlay="true"

@@ -7,8 +7,23 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
+
+data class DaySchedule(
+    var schedule: List<String> = emptyList()
+)
+
+data class TimeTable(
+    var monday: DaySchedule = DaySchedule(),
+    var tuesday: DaySchedule = DaySchedule(),
+    var wednesday: DaySchedule = DaySchedule(),
+    var thursday: DaySchedule = DaySchedule(),
+    var friday: DaySchedule = DaySchedule(),
+    var saturday: DaySchedule = DaySchedule(),
+    var sunday: DaySchedule = DaySchedule()
+)
 
 class Dashboard : AppCompatActivity() {
 
@@ -17,6 +32,7 @@ class Dashboard : AppCompatActivity() {
     private lateinit var timetableText: TextView
     private lateinit var daySelector: Spinner
     private lateinit var examButton: Button
+    private val db = FirebaseFirestore.getInstance()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +65,7 @@ class Dashboard : AppCompatActivity() {
             showExamSelectionDialog()
         }
 
-        val daysOfWeek = arrayOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday")
+        val daysOfWeek = arrayOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, daysOfWeek)
         daySelector.adapter = adapter
 
@@ -113,17 +129,32 @@ class Dashboard : AppCompatActivity() {
             .show()
     }
 
-    private val timetable = mapOf(
-        "AI_4" to mapOf(
-            "Sunday" to listOf("Holiday"),
-            "Monday" to listOf("08:30 AM - DSA/CN Lab", "09:30 AM - DSA/CN Lab", "10:20 AM - Break", "10:30 AM - Machine Language", "11:20 AM - Probability & Statistics", "12:10 PM - Operating Systems","01:00 PM - Lunch","01:30 PM - Environmental Science & Sustainability","02:15 PM - Skill Rack","03:00 PM - Skill Rack"),
-            "Tuesday" to listOf("08:30 AM - Operating Systems", "09:30 AM - Probability & Statistics", "10:20 AM - Break", "10:30 AM - Machine Language", "11:20 AM - Environmental Science & Sustainability", "12:10 PM - Fundamentals Of Data Science & Analytics","01:00 PM - Lunch","01:30 PM - Machine Language","02:15 PM - Probability & Statistics","03:00 PM - Computer Networks"),
-            "Wednesday" to listOf("08:30 AM - Fundamentals Of Data Science & Analytics/NM", "09:30 AM - Association/NM", "10:20 AM - Break", "10:30 AM - Operating Systems/NM", "11:20 AM - Probability & Statistics/NM", "12:10 PM - Environmental Science & Sustainability/NM","01:00 PM - Lunch","01:30 PM - Computer Networks/NM","02:15 PM - Fundamentals Of Data Science & Analytics/NM","03:00 PM - Machine Language/NM"),
-            "Thursday" to listOf("08:30 AM - Environmental Science & Sustainability", "09:30 AM - Computer Networks", "10:20 AM - Break", "10:30 AM - DSA/OS Lab", "11:20 AM - DSA/OS Lab", "12:10 PM - Library/PT","01:00 PM - Lunch","01:30 PM - Probability & Statistics","02:15 PM - Machine Language","03:00 PM - Probability & Statistics"),
-            "Friday" to listOf("08:30 AM - Fundamentals Of Data Science & Analytics", "09:30 AM - Environmental Science & Sustainability", "10:20 AM - Break", "10:30 AM - CN/ML Lab", "11:20 AM - CN/ML Lab", "12:10 PM - Operating Systems","01:00 PM - Lunch","01:30 PM - Computer Networks","02:15 PM - OS/ML Lab","03:00 PM - OS/ML Lab"),
-            "Saturday" to listOf("08:30 AM - Computer Networks", "09:30 AM - Fundamentals Of Data Science & Analytics", "10:20 AM - Break", "10:30 AM - Operating Systems", "11:20 AM - Fundamentals Of Data Science & Analytics", "12:10 PM - Machine Learning"),
-        )
-    )
+    @SuppressLint("SetTextI18n")
+    private fun updateTimetable(selectedDay: String) {
+        val department = userPreferences.getDepartment()
+        val semester = userPreferences.getSemester()
+        val key = "${department}_$semester"
+
+        db.collection("AI_4").document(key)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val dayData = document.get(selectedDay) as? Map<*, *>  // Extract day map
+                    val schedule = dayData?.get("schedule") as? List<String>  // Extract "schedule" array
+
+                    if (!schedule.isNullOrEmpty()) {
+                        timetableText.text = schedule.joinToString("\n")
+                    } else {
+                        timetableText.text = "No classes today!"
+                    }
+                } else {
+                    timetableText.text = "No timetable found for this selection."
+                }
+            }
+            .addOnFailureListener { _ ->
+                timetableText.text = "Error loading timetable."
+            }
+    }
 
     private val examTimetable = mapOf(
         "AI_4" to mapOf(
@@ -137,21 +168,8 @@ class Dashboard : AppCompatActivity() {
         )
     )
 
-    private fun updateTimetable(selectedDay: String) {
-        val department = userPreferences.getDepartment()
-        val semester = userPreferences.getSemester()
-        val key = "${department}_$semester"
-
-        val todaySchedule = timetable[key]?.get(selectedDay) ?: listOf("No classes today!")
-        timetableText.text = todaySchedule.joinToString("\n")
-    }
-
     private fun updateExamTimetable(selectedExam: String) {
-        val department = userPreferences.getDepartment()
-        val semester = userPreferences.getSemester()
-        val key = "${department}_$semester"
-
-        val examSchedule = examTimetable[key]?.get(selectedExam) ?: listOf("No exams scheduled!")
+        val examSchedule = examTimetable["AI_4"]?.get(selectedExam) ?: listOf("No exams scheduled!")
         timetableText.text = examSchedule.joinToString("\n")
     }
 }
