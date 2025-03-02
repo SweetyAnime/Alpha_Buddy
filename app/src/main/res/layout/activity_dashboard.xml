@@ -67,41 +67,43 @@
     <LinearLayout
         android:id="@+id/timetableOverlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/black"
-        android:alpha="0.8"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        android:padding="16dp">
+        android:background="@android:color/holo_blue_dark"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints">
 
-        <!-- Spinner to Select Day -->
         <Spinner
             android:id="@+id/daySelector"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_dark"
-            android:padding="8dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="8dp"/>
 
-        <!-- Timetable Text -->
         <TextView
             android:id="@+id/timetableText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="20dp" />
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:padding="8dp"
+            android:background="@android:color/darker_gray"/>
 
-        <!-- Close Button -->
+        <!-- New Exam Timetable Button -->
+        <Button
+            android:id="@+id/examButtonnew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Exam Timetable"
+            android:layout_marginTop="8dp"
+            tools:ignore="HardcodedText" />
+
         <Button
             android:id="@+id/closeOverlayButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Close"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
