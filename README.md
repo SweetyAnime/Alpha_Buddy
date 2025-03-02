@@ -1,4 +1,4 @@
-Alpha Buddy - Unofficial College Companion App
+Alpha Buddy - Unofficial College Companion App  
 📌 About
 Alpha Buddy is a student-focused app designed to simplify college life with essential tools and resources.  
 
