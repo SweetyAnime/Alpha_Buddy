@@ -23,7 +23,4 @@ class UserPreferences(context: Context) {
         return sharedPreferences.getString("semester", null)
     }
 
-    fun isUserChoiceSet(): Boolean {
-        return getDepartment() != null && getSemester() != null
-    }
 }
