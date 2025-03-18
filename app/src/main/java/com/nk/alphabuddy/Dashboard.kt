@@ -1,6 +1,7 @@
 package com.nk.alphabuddy
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -8,10 +9,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.firestore.FirebaseFirestore
+import com.nk.alphabuddy.databinding.ActivityDashboardBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Dashboard : AppCompatActivity() {
+
+
+    //opens the new activity from lottieanimation
+    private lateinit var binding: ActivityDashboardBinding
+
 
     private lateinit var userPreferences: UserPreferences
     private lateinit var timetableOverlay: LinearLayout
@@ -24,6 +31,19 @@ class Dashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+
+
+// Find the LottieAnimationView by its ID and set the click listener.
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        binding.eventsannouncement.setOnClickListener {
+            // Create an Intent to start the Events activity
+            val intent = Intent(this, Events::class.java)
+            // Start the Events activity
+            startActivity(intent)
+        }
 
         userPreferences = UserPreferences(this)
         supportActionBar?.hide()
@@ -121,25 +141,33 @@ class Dashboard : AppCompatActivity() {
         val semester = userPreferences.getSemester()
         val key = "${department}_$semester"
 
-        db.collection("AI_4").document(key)
+        db.collection("AI_4").document("AI_4")
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    val dayData = document.get(selectedDay) as? Map<*, *>  // Extract day map
-                    val schedule = dayData?.get("schedule") as? List<*>  // Extract "schedule" array
+                    val selectedDayCapitalized = selectedDay.replaceFirstChar { it.uppercase() } // Ensure correct case
+                    val dayData = document.get(selectedDayCapitalized) as? Map<*, *> // Get the day field
 
-                    if (!schedule.isNullOrEmpty()) {
-                        timetableText.text = schedule.joinToString("\n")
+                    if (dayData != null) {
+                        val scheduleList = dayData["schedule"] as? List<String> // Get schedule array
+
+                        if (!scheduleList.isNullOrEmpty()) {
+                            timetableText.text = scheduleList.joinToString("\n") // Display timetable
+                        } else {
+                            timetableText.text = "No classes today!"
+                        }
                     } else {
-                        timetableText.text = "No classes today!"
+                        timetableText.text = "No data for $selectedDayCapitalized."
                     }
                 } else {
-                    timetableText.text = "No timetable found for this selection."
+                    timetableText.text = "Timetable document not found."
                 }
             }
-            .addOnFailureListener { _ ->
-                timetableText.text = "Error loading timetable."
+            .addOnFailureListener { e ->
+                timetableText.text = "Error loading timetable: ${e.message}"
             }
+
+
     }
 
     private val examTimetable = mapOf(

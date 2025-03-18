@@ -62,7 +62,7 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/notes"
         tools:ignore="HardcodedText,MissingConstraints,VisualLintOverlap" />
@@ -100,14 +100,14 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="125dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="62dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/poppinsmedium"
-        android:text="Events/Announcements"
+        android:text="Events"
         android:textColor="@android:color/white"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/eventsannouncement"
         tools:ignore="HardcodedText,MissingConstraints,VisualLintOverlap" />

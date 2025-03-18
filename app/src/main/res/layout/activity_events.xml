@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/black"
+    tools:context=".Events">
+
+    <!-- Title for Events Page -->
+    <TextView
+        android:id="@+id/titleEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Events"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="12dp"/>
+
+    <!-- RecyclerView to display event items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewEvents"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:listitem="@layout/event_item" />
+
+</LinearLayout>

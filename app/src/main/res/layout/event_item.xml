@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="#18230F"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+<!-- Event Image -->
+    <ImageView
+    android:id="@+id/eventImage"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:scaleType="centerCrop"
+    android:background="@android:color/darker_gray"/>
+
+<!-- Event Name -->
+    <TextView
+    android:id="@+id/eventName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Event Name"
+    android:textColor="@android:color/white"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:paddingTop="8dp"/>
+
+<!-- Event Date -->
+    <TextView
+    android:id="@+id/eventDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Date: YYYY-MM-DD"
+    android:textColor="@android:color/white"
+    android:textSize="14sp"
+    android:paddingTop="4dp"/>
+
+    <!-- Days Remaining -->
+    <TextView
+    android:id="@+id/daysRemaining"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Starts in X days"
+    android:textSize="14sp"
+    android:textColor="@android:color/holo_red_dark"
+    android:paddingTop="4dp"/>
+
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
