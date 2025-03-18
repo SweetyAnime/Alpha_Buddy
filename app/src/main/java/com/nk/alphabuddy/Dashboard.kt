@@ -11,20 +11,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class DaySchedule(
-    var schedule: List<String> = emptyList()
-)
-
-data class TimeTable(
-    var monday: DaySchedule = DaySchedule(),
-    var tuesday: DaySchedule = DaySchedule(),
-    var wednesday: DaySchedule = DaySchedule(),
-    var thursday: DaySchedule = DaySchedule(),
-    var friday: DaySchedule = DaySchedule(),
-    var saturday: DaySchedule = DaySchedule(),
-    var sunday: DaySchedule = DaySchedule()
-)
-
 class Dashboard : AppCompatActivity() {
 
     private lateinit var userPreferences: UserPreferences
@@ -140,7 +126,7 @@ class Dashboard : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     val dayData = document.get(selectedDay) as? Map<*, *>  // Extract day map
-                    val schedule = dayData?.get("schedule") as? List<String>  // Extract "schedule" array
+                    val schedule = dayData?.get("schedule") as? List<*>  // Extract "schedule" array
 
                     if (!schedule.isNullOrEmpty()) {
                         timetableText.text = schedule.joinToString("\n")
