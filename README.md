@@ -27,6 +27,7 @@ Alpha Buddy is a student-focused app designed to simplify college life with esse
 🎓 Scholarship & Internship Alerts
 📩 Feedback & Reporting System
 🌟 Showcasing Talents/Skills Feed  
+📩 Fees Details and payment Feature
 
 ------------------------
 👋 Contribute & Stay Updated!  
