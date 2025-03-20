@@ -7,11 +7,12 @@ Alpha Buddy is a student-focused app designed to simplify college life with esse
 
 ✅ Available Now:  
 📅 Class & Exam Timetable (Personalized for your department & semester)  
+📢 Events
 
 ------------------
 🛠️ In Progress:  
 
-📢 Events & Announcements
+📢 Announcements
 📚 Notes  
 
 -----------------
@@ -26,6 +27,7 @@ Alpha Buddy is a student-focused app designed to simplify college life with esse
 🎓 Scholarship & Internship Alerts
 📩 Feedback & Reporting System
 🌟 Showcasing Talents/Skills Feed  
+📩 Fees Details and payment Feature
 
 ------------------------
 👋 Contribute & Stay Updated!  
