@@ -45,6 +45,13 @@ class Dashboard : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.notes.setOnClickListener {
+            // Create an Intent to start the Subject activity aka notes feature
+            val intent = Intent(this, SubjectActivity::class.java)
+            // Start the activity
+            startActivity(intent)
+        }
+
         userPreferences = UserPreferences(this)
         supportActionBar?.hide()
 
